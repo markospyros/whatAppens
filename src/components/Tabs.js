@@ -1,6 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Entypo, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { FormScreen } from "../Screens/FormScreen";
 import { GraphScreen } from "../Screens/GraphScreen";
 import { SymptonScreen } from "../Screens/SymptonScreen";
@@ -33,11 +33,7 @@ export const Tabs = () => {
         options={{
           tabBarLabel: "Grafer",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="graph-bar"
-              color={color}
-              size={size}
-            />
+            <Entypo name="bar-graph" color={color} size={size} />
           ),
         }}
       />
@@ -47,11 +43,7 @@ export const Tabs = () => {
         options={{
           tabBarLabel: "Symptom-nettverk",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons
-              name="git-network-sharp"
-              color={color}
-              size={size}
-            />
+            <Ionicons name="git-network-sharp" color={color} size={size} />
           ),
         }}
       />
