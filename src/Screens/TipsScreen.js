@@ -1,8 +1,12 @@
 import React from "react";
-import { Text } from "react-native";
+import { SafeAreaView, Text } from "react-native";
 
 const TipsScreen = () => {
-  return <Text>Tips Screen</Text>;
+  return (
+    <SafeAreaView>
+      <Text>Tips Screen</Text>
+    </SafeAreaView>
+  );
 };
 
 export default TipsScreen;

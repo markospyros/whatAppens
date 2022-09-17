@@ -1,6 +1,10 @@
 import React from "react";
-import { Text } from "react-native";
+import { SafeAreaView, Text } from "react-native";
 
 export const GraphScreen = () => {
-  return <Text>Graph Screen</Text>;
+  return (
+    <SafeAreaView>
+      <Text>Graph Screen</Text>
+    </SafeAreaView>
+  );
 };

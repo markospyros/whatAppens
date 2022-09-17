@@ -1,9 +1,10 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Entypo, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-import { FormScreen } from "../Screens/FormScreen";
+import HomeScreen from "../Screens/HomeScreen";
 import { GraphScreen } from "../Screens/GraphScreen";
 import { SymptonScreen } from "../Screens/SymptonScreen";
+import TipsScreen from "../Screens/TipsScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -11,11 +12,11 @@ export const Tabs = () => {
   return (
     <Tab.Navigator
       initialRouteName="Skjema"
-      screenOptions={{ tabBarActiveTintColor: "blue" }}
+      screenOptions={{ headerShown: false, tabBarActiveTintColor: "blue" }}
     >
       <Tab.Screen
         name="Skjema"
-        component={FormScreen}
+        component={HomeScreen}
         options={{
           tabBarLabel: "Skjema",
           tabBarIcon: ({ color, size }) => (
@@ -49,7 +50,7 @@ export const Tabs = () => {
       />
       <Tab.Screen
         name="Tips"
-        component={FormScreen}
+        component={TipsScreen}
         options={{
           tabBarLabel: "Tips & Triks",
           tabBarIcon: ({ color, size }) => (
