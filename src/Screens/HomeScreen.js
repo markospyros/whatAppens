@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { SafeAreaView, Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { questionaires } from "../components/FormScreenComponents/Question/Questions";
 
 const HomeScreen = ({ navigation }) => {

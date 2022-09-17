@@ -1,11 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { SafeAreaView, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import NextButton from "../components/FormScreenComponents/NextButton/NextButton";
 import Question from "../components/FormScreenComponents/Question/Question";
 import { questionaires } from "../components/FormScreenComponents/Question/Questions";
 import RadioButtonGroup from "../components/FormScreenComponents/RadioButton/RadioButtonGroup";
 import { appContainer } from "../components/FormScreenComponents/style";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const FormScreen = ({ route, navigation }) => {
   let { id, counter, question, category } = route.params;
