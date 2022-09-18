@@ -9,6 +9,7 @@ import { appContainer } from "../components/FormScreenComponents/style";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const FormScreen = ({ route, navigation }) => {
+  // Fetching data from the HomeScreen
   let { id, counter, question, category } = route.params;
 
   const questions = questionaires.map((question) => question.question);
@@ -16,6 +17,7 @@ const FormScreen = ({ route, navigation }) => {
   const categories = questionaires.map((question) => question.category);
 
   const onNext = () => {
+    // Increasing id variable by one so that we get next question everytime we move forward
     id++;
     counter++;
     navigation.push("Form", {
@@ -24,8 +26,6 @@ const FormScreen = ({ route, navigation }) => {
       question: questions[counter],
       category: categories[counter],
     });
-
-    console.log(counter, question, category);
   };
 
   const questionIndicator = `${id} av ${questions.length}`;

@@ -1,18 +1,16 @@
 import * as React from "react";
-import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import Navigation from "./src/components/FormScreenComponents/Navigation";
 
-const MyTheme = {
-  ...DefaultTheme,
+const AppTheme = {
   colors: {
-    ...DefaultTheme.colors,
     background: "white",
   },
 };
 
 const App = () => {
   return (
-    <NavigationContainer theme={MyTheme}>
+    <NavigationContainer theme={AppTheme}>
       <Navigation />
     </NavigationContainer>
   );

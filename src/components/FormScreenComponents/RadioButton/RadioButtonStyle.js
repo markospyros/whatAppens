@@ -1,5 +1,8 @@
+// Style for Radio buttons
+// For styling we use a library called react-native-tailwindcss
 import { t } from "react-native-tailwindcss";
 
+// Style for radio button container
 export const radioButtonView = [
   t.borderSolid,
   t.p5,
@@ -9,6 +12,7 @@ export const radioButtonView = [
   t.mY2,
 ];
 
+// Style for radio button container when pressed
 export const radioButtonViewOnPress = [
   t.borderSolid,
   t.p5,
@@ -18,8 +22,10 @@ export const radioButtonViewOnPress = [
   t.mY2,
 ];
 
+// Style for radio button text
 export const radioButtonText = [t.textBase, t.mX3, t.p1];
 
+// Style for radio button dot
 export const radioButtonDot = [
   t.borderSolid,
   t.border2,
@@ -29,6 +35,7 @@ export const radioButtonDot = [
   t.p2,
 ];
 
+// Style for radio button inner dot
 export const radioButtonInnerDot = [
   t.borderSolid,
   t.border2,
@@ -37,6 +44,7 @@ export const radioButtonInnerDot = [
   t.p1,
 ];
 
+// Style for radio button inner dot when pressed
 export const radioButtonInnerDotOnPress = [
   t.borderSolid,
   t.border2,
