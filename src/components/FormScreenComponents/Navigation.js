@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ animation: "none" }}>
       <Stack.Screen
         name="Tabs"
         component={Tabs}
