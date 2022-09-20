@@ -21,25 +21,32 @@ const FormScreen = ({ route, navigation }) => {
     // Increasing id variable by one so that we get next question everytime we move forward
     if (id !== questions.length) {
       id++;
-      counter++;
+      counter++,
+        navigation.push("Form", {
+          id: id,
+          counter: counter,
+          question: questions[counter],
+          category: categories[counter],
+        });
+    }
+  };
+
+  const onPrevious = () => {
+    if (id !== 1) {
+      id--;
+      counter--;
       navigation.push("Form", {
         id: id,
         counter: counter,
         question: questions[counter],
         category: categories[counter],
       });
-    } else {
-      id === questions.length;
     }
   };
 
-  const onPrevious = () => {
-    id--;
-    counter--;
-    navigation.goBack();
-  };
-
-  console.log(`Counter is ${counter} and ID is ${id}`);
+  console.log(
+    `Counter is ${counter}, ID is ${id} and Question length is ${questions.length}`
+  );
 
   const questionIndicator = `${id} av ${questions.length}`;
 

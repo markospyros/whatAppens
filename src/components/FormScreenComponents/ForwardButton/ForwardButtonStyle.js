@@ -1,6 +1,10 @@
 import { t } from "react-native-tailwindcss";
 
-export const forwardButtonGroupView = [t.itemsCenter];
+export const forwardButtonGroupView = [
+  t.itemsCenter,
+  t.flexRow,
+  t.justifyBetween,
+];
 
 export const forwardButtonView = [
   t.borderSolid,
