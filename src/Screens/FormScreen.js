@@ -31,19 +31,6 @@ const FormScreen = ({ route, navigation }) => {
     }
   };
 
-  const onPrevious = () => {
-    if (id !== 1) {
-      id--;
-      counter--;
-      navigation.push("Form", {
-        id: id,
-        counter: counter,
-        question: questions[counter],
-        category: categories[counter],
-      });
-    }
-  };
-
   console.log(
     `Counter is ${counter}, ID is ${id} and Question length is ${questions.length}`
   );
@@ -55,7 +42,7 @@ const FormScreen = ({ route, navigation }) => {
       <StatusBar />
       <Question question={question} />
       <RadioButtonGroup category={category} />
-      <ForwardButtonGroup onPrevious={onPrevious} onNext={onNext} />
+      <ForwardButtonGroup ssonNext={onNext} />
       <Text>{questionIndicator}</Text>
     </SafeAreaView>
   );

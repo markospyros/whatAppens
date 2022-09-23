@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList } from "react-native";
 import RadioButton from "./RadioButton";
 import {
@@ -8,6 +8,7 @@ import {
   radioButtonView,
   radioButtonViewOnPress,
 } from "./RadioButtonStyle";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const RadioButtonGroup = () => {
   const responseOptions = [
@@ -17,7 +18,9 @@ const RadioButtonGroup = () => {
     { id: 4, value: 3, title: "Veldig mye" },
   ];
 
-  const [selectedId, setSelectedId] = useState(null);
+  let STORAGE_KEY = "selectedId";
+
+  const [selectedId, setSelectedId] = useState(1);
 
   const renderRadioButton = ({ item }) => {
     const boxStyle =
@@ -26,7 +29,7 @@ const RadioButtonGroup = () => {
     const dotStyle =
       item.id === selectedId ? radioButtonInnerDotOnPress : radioButtonInnerDot;
 
-    const press = () => {
+    const press = async () => {
       setSelectedId(item.id);
     };
 

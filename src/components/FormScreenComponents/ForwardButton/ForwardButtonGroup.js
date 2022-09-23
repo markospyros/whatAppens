@@ -6,7 +6,6 @@ import { forwardButtonGroupView } from "./ForwardButtonStyle";
 const ForwardButtonGroup = (props) => {
   return (
     <View style={forwardButtonGroupView}>
-      <ForwardButton function={props.onPrevious} title="Forrige" />
       <ForwardButton function={props.onNext} title="Next" />
     </View>
   );
