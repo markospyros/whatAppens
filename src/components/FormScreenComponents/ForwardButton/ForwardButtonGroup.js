@@ -5,7 +5,7 @@ import { forwardButtonGroupView } from "./ForwardButtonStyle";
 
 const ForwardButtonGroup = (props) => {
   return (
-    <View style={forwardButtonGroupView}>
+    <View>
       <ForwardButton function={props.onNext} title="Next" />
     </View>
   );

@@ -20,7 +20,7 @@ const RadioButtonGroup = () => {
 
   let STORAGE_KEY = "selectedId";
 
-  const [selectedId, setSelectedId] = useState(1);
+  const [selectedId, setSelectedId] = useState(0);
 
   const renderRadioButton = ({ item }) => {
     const boxStyle =

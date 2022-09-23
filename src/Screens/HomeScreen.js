@@ -14,6 +14,8 @@ const HomeScreen = ({ navigation }) => {
   // Creating a counter variable which allow us to move to previous and next question
   let counter = 0;
 
+  let totalPoints = 0;
+
   return (
     <SafeAreaView>
       <StatusBar />
@@ -25,6 +27,7 @@ const HomeScreen = ({ navigation }) => {
             counter,
             question: questions[counter],
             category: categories[counter],
+            totalPoints,
           });
         }}
       >

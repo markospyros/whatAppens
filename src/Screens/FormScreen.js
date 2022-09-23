@@ -42,7 +42,7 @@ const FormScreen = ({ route, navigation }) => {
       <StatusBar />
       <Question question={question} />
       <RadioButtonGroup category={category} />
-      <ForwardButtonGroup ssonNext={onNext} />
+      <ForwardButtonGroup onNext={onNext} />
       <Text>{questionIndicator}</Text>
     </SafeAreaView>
   );
