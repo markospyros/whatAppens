@@ -10,40 +10,34 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import ForwardButtonGroup from "../components/FormScreenComponents/ForwardButton/ForwardButtonGroup";
 
 const FormScreen = ({ route, navigation }) => {
-  // Fetching data from the HomeScreen
-  let { id, counter, question, category } = route.params;
-
   const questions = questionaires.map((question) => question.question);
 
   const categories = questionaires.map((question) => question.category);
 
+  let [counter, setCounter] = useState(0);
+
+  let [question, setQuestion] = useState(questions[counter]);
+
+  let [category, setCategory] = useState(categories[counter]);
+
   const onNext = () => {
-    // Increasing id variable by one so that we get next question everytime we move forward
-    if (id !== questions.length) {
-      id++;
-      counter++,
-        navigation.push("Form", {
-          id: id,
-          counter: counter,
-          question: questions[counter],
-          category: categories[counter],
-        });
+    if (counter < questions.length - 1) {
+      setCounter((counter += 1));
+      setQuestion(questions[counter]);
+      setCategory(categories[counter]);
     }
   };
-
-  console.log(
-    `Counter is ${counter}, ID is ${id} and Question length is ${questions.length}`
-  );
-
-  const questionIndicator = `${id} av ${questions.length}`;
 
   return (
     <SafeAreaView style={appContainer}>
       <StatusBar />
       <Question question={question} />
       <RadioButtonGroup category={category} />
-      <ForwardButtonGroup onNext={onNext} />
-      <Text>{questionIndicator}</Text>
+      <ForwardButtonGroup
+        onNext={onNext}
+        counter={counter}
+        limit={questions.length - 1}
+      />
     </SafeAreaView>
   );
 };

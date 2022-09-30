@@ -10,7 +10,7 @@ import {
 } from "./RadioButtonStyle";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const RadioButtonGroup = () => {
+const RadioButtonGroup = (props) => {
   const responseOptions = [
     { id: 1, value: 0, title: "Ikke plaget" },
     { id: 2, value: 1, title: "Lite plaget" },
@@ -22,6 +22,28 @@ const RadioButtonGroup = () => {
 
   const [selectedId, setSelectedId] = useState(0);
 
+  const save = async (value) => {
+    try {
+      await AsyncStorage.setItem(STORAGE_KEY, value.toString());
+    } catch (error) {
+      console.log("Failed!");
+    }
+  };
+
+  const load = async () => {
+    try {
+      let selectedId = await AsyncStorage.getItem(STORAGE_KEY);
+
+      if (selectedId !== null) {
+        setSelectedId(selectedId);
+      }
+    } catch (error) {
+      alert("Failed to show on cl");
+    }
+  };
+
+  console.log(load());
+
   const renderRadioButton = ({ item }) => {
     const boxStyle =
       item.id === selectedId ? radioButtonViewOnPress : radioButtonView;
@@ -29,8 +51,9 @@ const RadioButtonGroup = () => {
     const dotStyle =
       item.id === selectedId ? radioButtonInnerDotOnPress : radioButtonInnerDot;
 
-    const press = async () => {
+    const press = () => {
       setSelectedId(item.id);
+      save(item.value);
     };
 
     return (
