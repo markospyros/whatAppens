@@ -22,28 +22,6 @@ const RadioButtonGroup = (props) => {
 
   const [selectedId, setSelectedId] = useState(0);
 
-  const save = async (value) => {
-    try {
-      await AsyncStorage.setItem(STORAGE_KEY, value.toString());
-    } catch (error) {
-      console.log("Failed!");
-    }
-  };
-
-  const load = async () => {
-    try {
-      let selectedId = await AsyncStorage.getItem(STORAGE_KEY);
-
-      if (selectedId !== null) {
-        setSelectedId(selectedId);
-      }
-    } catch (error) {
-      alert("Failed to show on cl");
-    }
-  };
-
-  console.log(load());
-
   const renderRadioButton = ({ item }) => {
     const boxStyle =
       item.id === selectedId ? radioButtonViewOnPress : radioButtonView;
@@ -53,7 +31,6 @@ const RadioButtonGroup = (props) => {
 
     const press = () => {
       setSelectedId(item.id);
-      save(item.value);
     };
 
     return (
