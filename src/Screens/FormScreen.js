@@ -50,12 +50,16 @@ export default FormScreen;
 
 const styles = StyleSheet.create({
   container: {
+    height: '100%',
     marginHorizontal: 30,
   },
-  bottom: {},
+  bottom: {
+    justifyContent: "flex-end",
+    flex: 1
+  },
   btn: {
     backgroundColor: "#1A759F",
-    padding: 12,
+    padding: 22,
     paddingHorizontal: 16,
     borderRadius: 16,
     alignItems: "center",
@@ -63,6 +67,8 @@ const styles = StyleSheet.create({
   },
   textBtn: {
     color: "white",
+    fontSize: 18,
+    fontWeight: '600',
   },
   question: {
     marginVertical: 30,
