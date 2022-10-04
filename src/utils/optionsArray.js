@@ -4,7 +4,7 @@ export let optionsArray = (quest, number) => {
   let array = [];
 
   for (let i = 0; i < answerOptions.length; i++) {
-    array.push(answerOptions[number][i].text);
+    array.push(answerOptions[number][i]);
   }
 
   return array;
