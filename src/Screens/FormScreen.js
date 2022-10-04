@@ -19,7 +19,6 @@ const FormScreen = () => {
     setCounter((counter += 1));
     setQuestion(questions[counter]);
     setOptions(optionsArray(questionnaires, counter));
-    // console.log(question);
     console.log(options);
   };
 
