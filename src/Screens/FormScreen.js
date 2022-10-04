@@ -23,10 +23,7 @@ const FormScreen = () => {
       setOptions(optionsArray(questionnaires, counter));
     }
   };
-
-  const [hidePrev, setHidePrev] = useState(false);
   const Prev = () => {
-      setShowPrev(!hidePrev);
       setCounter((counter -= 1));
       setQuestion(questions[counter]);
       setOptions(optionsArray(questionnaires, counter));
