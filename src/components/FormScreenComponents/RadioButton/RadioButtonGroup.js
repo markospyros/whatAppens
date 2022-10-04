@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FlatList } from "react-native";
+import { FlatList, SafeAreaView } from "react-native";
 import RadioButton from "./RadioButton";
 import {
   radioButtonGroupContainer,
@@ -9,6 +9,7 @@ import {
   radioButtonViewOnPress,
 } from "./RadioButtonStyle";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Selector } from "react-native-flatlist-selector";
 
 const RadioButtonGroup = (props) => {
   const responseOptions = [
@@ -43,15 +44,26 @@ const RadioButtonGroup = (props) => {
     );
   };
 
+  const getIndex = (selectedId) => {
+    setSelectedId({ selectedId: selectedId });
+  };
+
   return (
-    <FlatList
-      data={responseOptions}
-      renderItem={renderRadioButton}
-      keyExtractor={(item) => item.id}
-      extraData={selectedId}
-      scrollEnabled={false}
-      style={radioButtonGroupContainer}
-    />
+    <SafeAreaView>
+      <FlatList
+        data={responseOptions}
+        renderItem={renderRadioButton}
+        keyExtractor={(item) => item.id}
+        extraData={selectedId}
+        scrollEnabled={false}
+        style={radioButtonGroupContainer}
+      />
+      <Selector
+        data={responseOptions}
+        selectedIndex={getIndex}
+        renderItem={renderRadioButton}
+      />
+    </SafeAreaView>
   );
 };
 

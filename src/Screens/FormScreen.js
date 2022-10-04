@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { Text, View } from "react-native";
+import { Text, View, DevSettings } from "react-native";
 import ForwardButton from "../components/FormScreenComponents/ForwardButton/ForwardButton";
 import Question from "../components/FormScreenComponents/Question/Question";
 import { questionaires } from "../components/FormScreenComponents/Question/Questions";
@@ -20,6 +20,8 @@ const FormScreen = ({ route, navigation }) => {
 
   let [category, setCategory] = useState(categories[counter]);
 
+  let [selectedId, setSelectedId] = useState();
+
   const onNext = () => {
     if (counter < questions.length - 1) {
       setCounter((counter += 1));
@@ -32,7 +34,7 @@ const FormScreen = ({ route, navigation }) => {
     <SafeAreaView style={appContainer}>
       <StatusBar />
       <Question question={question} />
-      <RadioButtonGroup category={category} />
+      <RadioButtonGroup category={category} selectedId={selectedId} />
       <ForwardButtonGroup
         onNext={onNext}
         counter={counter}
