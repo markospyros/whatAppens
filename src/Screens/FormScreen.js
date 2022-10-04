@@ -21,8 +21,15 @@ const FormScreen = () => {
       setCounter((counter += 1));
       setQuestion(questions[counter]);
       setOptions(optionsArray(questionnaires, counter));
-      console.log(counter);
     }
+  };
+
+  const [hidePrev, setHidePrev] = useState(false);
+  const Prev = () => {
+      setShowPrev(!hidePrev);
+      setCounter((counter -= 1));
+      setQuestion(questions[counter]);
+      setOptions(optionsArray(questionnaires, counter));
   };
 
   const renderOptions = options.map((option) => (
@@ -32,14 +39,19 @@ const FormScreen = () => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
+        <View>
+          <Text style={styles.info}>Tenk på de siste 4 timene</Text>
+        </View>
         <View style={styles.question}>
           <Question question={question} />
         </View>
         {renderOptions}
         <View style={styles.bottom}>
-          <TouchableOpacity style={styles.btn}>
-            <Text style={styles.textBtn}>Prev</Text>
-          </TouchableOpacity>
+          {counter === 0 ? null : ( 
+          <TouchableOpacity style={styles.btn} onPress={Prev}>
+            <Text style={styles.textBtn}>Previous</Text>
+          </TouchableOpacity>)
+          } 
         </View>
       </View>
     </SafeAreaView>
@@ -49,28 +61,36 @@ const FormScreen = () => {
 export default FormScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    height: '100%',
-    marginHorizontal: 30,
-  },
   bottom: {
     justifyContent: "flex-end",
-    flex: 1
+    flex: 1,
+    alignItems: "center"
   },
   btn: {
     backgroundColor: "#1A759F",
-    padding: 22,
-    paddingHorizontal: 16,
-    borderRadius: 16,
+    paddingVertical: 22,
+    paddingHorizontal: 20,
+    borderRadius: 8,
     alignItems: "center",
     marginBottom: 30,
+    width: 200,
+  },
+  container: {
+    height: '100%',
+    marginHorizontal: 20,
+  },
+  info: {
+    marginTop: 20,
+    fontSize: 18,
+    opacity: 0.6
   },
   textBtn: {
     color: "white",
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: '500',
   },
   question: {
-    marginVertical: 30,
+    marginTop: 10,
+    marginBottom: 50
   },
 });

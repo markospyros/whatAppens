@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     backgroundColor: "#90cdf4",
     paddingHorizontal: 12,
-    borderRadius: 12,
+    borderRadius: 8,
     padding: 24,
   },
   optionText: {

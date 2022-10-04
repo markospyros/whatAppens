@@ -10,5 +10,6 @@ export default Question;
 const styles = StyleSheet.create({
   question: {
     fontSize: 22,
+    fontWeight: '600'
   },
 });
