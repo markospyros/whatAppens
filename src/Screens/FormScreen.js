@@ -16,6 +16,8 @@ const FormScreen = () => {
 
   let [options, setOptions] = useState(optionsArray(questionnaires, counter));
 
+  console.log(options[0].text);
+
   const Next = () => {
     if (counter !== questions.length - 1) {
       setCounter((counter += 1));
@@ -23,15 +25,22 @@ const FormScreen = () => {
       setOptions(optionsArray(questionnaires, counter));
     }
   };
+
   const Prev = () => {
-      setCounter((counter -= 1));
-      setQuestion(questions[counter]);
-      setOptions(optionsArray(questionnaires, counter));
+    setCounter((counter -= 1));
+    setQuestion(questions[counter]);
+    setOptions(optionsArray(questionnaires, counter));
   };
 
-  const renderOptions = options.map((option) => (
-    <OptionButton onPress={Next} option={option.text} />
-  ));
+  const renderOptions = options.map((option) => {
+    return (
+      <OptionButton
+        key={option.answerOptionId}
+        onPress={Next}
+        option={option.text}
+      />
+    );
+  });
 
   return (
     <SafeAreaView>
@@ -44,11 +53,11 @@ const FormScreen = () => {
         </View>
         {renderOptions}
         <View style={styles.bottom}>
-          {counter === 0 ? null : ( 
-          <TouchableOpacity style={styles.btn} onPress={Prev}>
-            <Text style={styles.textBtn}>Previous</Text>
-          </TouchableOpacity>)
-          } 
+          {counter === 0 ? null : (
+            <TouchableOpacity style={styles.btn} onPress={Prev}>
+              <Text style={styles.textBtn}>Previous</Text>
+            </TouchableOpacity>
+          )}
         </View>
       </View>
     </SafeAreaView>
@@ -61,7 +70,7 @@ const styles = StyleSheet.create({
   bottom: {
     justifyContent: "flex-end",
     flex: 1,
-    alignItems: "center"
+    alignItems: "center",
   },
   btn: {
     backgroundColor: "#1A759F",
@@ -73,21 +82,21 @@ const styles = StyleSheet.create({
     width: 200,
   },
   container: {
-    height: '100%',
+    height: "100%",
     marginHorizontal: 20,
   },
   info: {
     marginTop: 20,
     fontSize: 18,
-    opacity: 0.6
+    opacity: 0.6,
   },
   textBtn: {
     color: "white",
     fontSize: 18,
-    fontWeight: '500',
+    fontWeight: "500",
   },
   question: {
     marginTop: 10,
-    marginBottom: 50
+    marginBottom: 50,
   },
 });
