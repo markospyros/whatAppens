@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../../Screens/HomeScreen";
 import FormScreen from "../../Screens/FormScreen";
 import { Tabs } from "../Tabs";
+import FormComponent from "../FormScreenComponents/FormComponent";
 
 const Stack = createNativeStackNavigator();
 

@@ -32,12 +32,14 @@ const FormScreen = () => {
     setOptions(optionsArray(questionnaires, counter));
   };
 
-  const renderOptions = options.map((option) => {
+  const renderOptions = options.map((option, i) => {
+    i--;
     return (
       <OptionButton
         key={option.answerOptionId}
         onPress={Next}
         option={option.text}
+        value={i++}
       />
     );
   });
