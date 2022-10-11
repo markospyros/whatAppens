@@ -12,7 +12,7 @@ export const Tabs = () => {
   return (
     <Tab.Navigator
       initialRouteName="Skjema"
-      screenOptions={{ headerShown: false, tabBarActiveTintColor: "blue" }}
+      screenOptions={{ headerShown: false, tabBarActiveTintColor: "#197CA5" }}
     >
       <Tab.Screen
         name="Skjema"

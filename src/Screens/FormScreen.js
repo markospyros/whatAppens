@@ -16,13 +16,33 @@ const FormScreen = () => {
 
   let [options, setOptions] = useState(optionsArray(questionnaires, counter));
 
-  console.log(options[0].text);
+  let [score, setScore] = useState(0);
 
-  const Next = () => {
-    if (counter !== questions.length - 1) {
+  const lastQuestion = questions.length - 1;
+
+  const Next = (option) => {
+    if (option === "Ikke plaget") {
+      setScore((score += 0));
+    }
+
+    if (option === "Lite plaget") {
+      setScore((score += 1));
+    }
+
+    if (option === "Ganske mye") {
+      setScore((score += 2));
+    }
+
+    if (option === "Veldig mye") {
+      setScore((score += 3));
+    }
+
+    if (counter !== lastQuestion) {
       setCounter((counter += 1));
       setQuestion(questions[counter]);
       setOptions(optionsArray(questionnaires, counter));
+      console.log(counter);
+      console.log(questions.length);
     }
   };
 
@@ -32,14 +52,12 @@ const FormScreen = () => {
     setOptions(optionsArray(questionnaires, counter));
   };
 
-  const renderOptions = options.map((option, i) => {
-    i--;
+  const renderOptions = options.map((option) => {
     return (
       <OptionButton
         key={option.answerOptionId}
-        onPress={Next}
+        onPress={() => Next(option.text)}
         option={option.text}
-        value={i++}
       />
     );
   });
@@ -56,10 +74,15 @@ const FormScreen = () => {
         {renderOptions}
         <View style={styles.bottom}>
           {counter === 0 ? null : (
-            <TouchableOpacity style={styles.btn} onPress={Prev}>
+            <TouchableOpacity style={styles.prevBtn} onPress={Prev}>
               <Text style={styles.textBtn}>Previous</Text>
             </TouchableOpacity>
           )}
+          {counter === lastQuestion ? (
+            <TouchableOpacity style={styles.submitBtn}>
+              <Text style={styles.textBtn}>Submit</Text>
+            </TouchableOpacity>
+          ) : null}
         </View>
       </View>
     </SafeAreaView>
@@ -74,14 +97,24 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
   },
-  btn: {
+  prevBtn: {
     backgroundColor: "#1A759F",
-    paddingVertical: 22,
+    paddingVertical: 20,
     paddingHorizontal: 20,
     borderRadius: 8,
     alignItems: "center",
     marginBottom: 30,
-    width: 200,
+    width: 150,
+    marginRight: 180,
+  },
+  submitBtn: {
+    backgroundColor: "#1A759F",
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    alignItems: "center",
+    marginBottom: 30,
+    width: 150,
   },
   container: {
     height: "100%",
