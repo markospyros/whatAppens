@@ -74,12 +74,12 @@ const FormScreen = () => {
         {renderOptions}
         <View style={styles.bottom}>
           {counter === 0 ? null : (
-            <TouchableOpacity style={styles.prevBtn} onPress={Prev}>
+            <TouchableOpacity style={styles.btn} onPress={Prev}>
               <Text style={styles.textBtn}>Previous</Text>
             </TouchableOpacity>
           )}
           {counter === lastQuestion ? (
-            <TouchableOpacity style={styles.submitBtn}>
+            <TouchableOpacity style={styles.btn}>
               <Text style={styles.textBtn}>Submit</Text>
             </TouchableOpacity>
           ) : null}
@@ -93,26 +93,16 @@ export default FormScreen;
 
 const styles = StyleSheet.create({
   bottom: {
-    justifyContent: "flex-end",
-    flex: 1,
-    alignItems: "center",
+      flexDirection: 'row',
+      flex: 1,
+      alignItems: 'flex-end',
+      justifyContent: 'space-between'
   },
-  prevBtn: {
+  btn: {
     backgroundColor: "#1A759F",
     paddingVertical: 20,
     paddingHorizontal: 20,
     borderRadius: 8,
-    alignItems: "center",
-    marginBottom: 30,
-    width: 150,
-    marginRight: 180,
-  },
-  submitBtn: {
-    backgroundColor: "#1A759F",
-    paddingVertical: 20,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-    alignItems: "center",
     marginBottom: 30,
     width: 150,
   },
@@ -129,6 +119,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 18,
     fontWeight: "500",
+    textAlign: "center"
   },
   question: {
     marginTop: 10,
