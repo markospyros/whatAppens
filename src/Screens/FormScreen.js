@@ -1,13 +1,21 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
-import { Text, TouchableOpacity, StyleSheet, View } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  View,
+  Button,
+  DevSettings,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Question from "../components/FormScreenComponents/Question/Question";
 import { questionnaires } from "../components/FormScreenComponents/Question/Questions";
 import { optionsArray } from "../utils/optionsArray";
 import OptionButton from "../components/FormScreenComponents/OptionButton/OptionButton";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const FormScreen = () => {
+const FormScreen = ({ navigation, route }) => {
   const questions = questionnaires.map((question) => question.text);
 
   let [counter, setCounter] = useState(0);
@@ -18,22 +26,34 @@ const FormScreen = () => {
 
   let [score, setScore] = useState(0);
 
+  let [storage, setStorage] = useState();
+
   const lastQuestion = questions.length - 1;
 
-  const Next = (option) => {
-    if (option === "Ikke plaget") {
+  let { key } = route.params;
+
+  const save = async () => {
+    try {
+      await AsyncStorage.setItem(key, score.toString());
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+  const Next = (answer) => {
+    if (answer === "Ikke plaget") {
       setScore((score += 0));
     }
 
-    if (option === "Lite plaget") {
+    if (answer === "Lite plaget") {
       setScore((score += 1));
     }
 
-    if (option === "Ganske mye") {
+    if (answer === "Ganske mye") {
       setScore((score += 2));
     }
 
-    if (option === "Veldig mye") {
+    if (answer === "Veldig mye") {
       setScore((score += 3));
     }
 
@@ -43,6 +63,10 @@ const FormScreen = () => {
       setOptions(optionsArray(questionnaires, counter));
       console.log(counter);
       console.log(questions.length);
+    } else {
+      save();
+      navigation.navigate("Tabs");
+      DevSettings.reload();
     }
   };
 
@@ -78,11 +102,6 @@ const FormScreen = () => {
               <Text style={styles.textBtn}>Previous</Text>
             </TouchableOpacity>
           )}
-          {counter === lastQuestion ? (
-            <TouchableOpacity style={styles.btn}>
-              <Text style={styles.textBtn}>Submit</Text>
-            </TouchableOpacity>
-          ) : null}
         </View>
       </View>
     </SafeAreaView>
@@ -93,10 +112,10 @@ export default FormScreen;
 
 const styles = StyleSheet.create({
   bottom: {
-      flexDirection: 'row',
-      flex: 1,
-      alignItems: 'flex-end',
-      justifyContent: 'space-between'
+    flexDirection: "row",
+    flex: 1,
+    alignItems: "flex-end",
+    justifyContent: "space-between",
   },
   btn: {
     backgroundColor: "#1A759F",
@@ -119,7 +138,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 18,
     fontWeight: "500",
-    textAlign: "center"
+    textAlign: "center",
   },
   question: {
     marginTop: 10,

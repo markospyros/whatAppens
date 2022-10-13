@@ -7,8 +7,11 @@ import { MaterialIcons } from "@expo/vector-icons";
 const FormComponent = (props) => {
   return (
     <TouchableOpacity
-      onPress={() => props.navigation.navigate("Form")}
+      onPress={() =>
+        props.navigation.navigate("Form", { key: props.secretKey })
+      }
       style={styles.container}
+      disabled={props.disability}
     >
       <View style={styles.iconContainer}>
         <MaterialCommunityIcons
