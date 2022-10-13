@@ -56,13 +56,10 @@ const FormScreen = ({ navigation, route }) => {
     if (answer === "Veldig mye") {
       setScore((score += 3));
     }
-
     if (counter !== lastQuestion) {
       setCounter((counter += 1));
       setQuestion(questions[counter]);
       setOptions(optionsArray(questionnaires, counter));
-      console.log(counter);
-      console.log(questions.length);
     } else {
       save();
       navigation.navigate("Tabs");
@@ -90,7 +87,7 @@ const FormScreen = ({ navigation, route }) => {
     <SafeAreaView>
       <View style={styles.container}>
         <View>
-          <Text style={styles.info}>Tenk på de siste 4 timene</Text>
+          <Text style={styles.info}>Tenk på de siste 24 timene</Text>
         </View>
         <View style={styles.question}>
           <Question question={question} />
@@ -103,6 +100,10 @@ const FormScreen = ({ navigation, route }) => {
             </TouchableOpacity>
           )}
         </View>
+        <Text style={styles.questionCounter}>
+          <Text style={styles.currentQuestion}>{counter + 1}</Text>
+          <Text style={styles.lastQuestion}> / {questions.length} </Text>
+      </Text>
       </View>
     </SafeAreaView>
   );
@@ -122,8 +123,13 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 20,
     borderRadius: 8,
-    marginBottom: 30,
+    marginBottom: 5,
     width: 150,
+  },
+  currentQuestion:{
+    fontSize: 20,
+    fontWeight: '500',
+    opacity: 1
   },
   container: {
     height: "100%",
@@ -133,6 +139,9 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontSize: 18,
     opacity: 0.6,
+  },
+  lastQuestion: {
+    fontSize: 16,
   },
   textBtn: {
     color: "white",
@@ -144,4 +153,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 50,
   },
+  questionCounter:{
+    marginBottom: 10,
+    textAlign: "center"
+  }
 });
