@@ -18,8 +18,9 @@ const HomeScreen = ({ navigation }) => {
   let [eveningDisable, setEveningDisable] = useState(false);
 
   const morningDisableCondition = () => {
-    if (morningStorage === 12) {
+    if (morningStorage > 0) {
       setMorningDisable(true);
+      console.log(morningDisable);
     }
   };
 
@@ -68,19 +69,17 @@ const HomeScreen = ({ navigation }) => {
     } catch (error) {
       console.log(error);
     }
-    morningDisableCondition();
-    noonDisableCondition();
-    afternoonDisableCondition();
-    eveningDisableCondition();
   };
 
   useEffect(() => {
     load();
   }, []);
+  }
 
   return (
     <SafeAreaView>
       <StatusBar />
+      
       <Text style={styles.title}>Today's form</Text>
       <View style={styles.container}>
         <FormComponent
