@@ -10,7 +10,6 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Question from "../components/FormScreenComponents/Question/Question";
-import { questionnaires } from "../components/FormScreenComponents/Question/Questions";
 import { optionsArray } from "../utils/optionsArray";
 import OptionButton from "../components/FormScreenComponents/OptionButton/OptionButton";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -24,7 +23,7 @@ const FormScreen = ({ navigation, route }) => {
 
   let [question, setQuestion] = useState(questions[counter]);
 
-  let [options, setOptions] = useState(optionsArray(questionnaires, counter));
+  let [options, setOptions] = useState(optionsArray(questionnaire, counter));
 
   let [score, setScore] = useState(0);
 
@@ -44,31 +43,27 @@ const FormScreen = ({ navigation, route }) => {
     if (answer === "Ikke plaget") {
       setScore((score += 0));
       array.push(0);
-      alert(array);
     }
 
     if (answer === "Lite plaget") {
       setScore((score += 1));
       array.push(1);
-      alert(array);
     }
 
     if (answer === "Ganske mye") {
       setScore((score += 2));
       array.push(2);
-      alert(array);
     }
 
     if (answer === "Veldig mye") {
       setScore((score += 3));
       array.push(3);
-      alert(array);
     }
 
     if (counter !== lastQuestion) {
       setCounter((counter += 1));
       setQuestion(questions[counter]);
-      setOptions(optionsArray(questionnaires, counter));
+      setOptions(optionsArray(questionnaire, counter));
     } else {
       navigation.navigate("Tabs");
     }
@@ -77,7 +72,7 @@ const FormScreen = ({ navigation, route }) => {
   const Prev = () => {
     setCounter((counter -= 1));
     setQuestion(questions[counter]);
-    setOptions(optionsArray(questionnaires, counter));
+    setOptions(optionsArray(questionnaire, counter));
   };
 
   const renderOptions = options.map((option) => {

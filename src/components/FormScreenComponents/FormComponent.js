@@ -18,22 +18,29 @@ export default class FormComponent extends Component {
     };
   }
 
+  currentHour = new Date().getHours();
+
   navigationToForm = () => {
-    if (this.props.array.length === 0) {
-      this.props.navigation.navigate("Form", {
-        questionnaire: this.props.questionnaire,
-        array: this.props.array,
-      });
-    }
-    if (this.props.array.length > 0) {
-      this.setState({
-        answerStatusState: (
-          <View style={styles.answerContainerStyle}>
-            <AntDesign name="check" size={24} color="green" />
-          </View>
-        ),
-      });
-    }
+    if (
+      this.currentHour >= this.props.startHour &&
+      this.currentHour <= this.props.endHour
+    )
+      if (this.props.array.length === 0) {
+        {
+          this.props.navigation.navigate("Form", {
+            questionnaire: this.props.questionnaire,
+            array: this.props.array,
+          });
+        }
+      } else {
+        this.setState({
+          answerStatusState: (
+            <View style={styles.answerContainerStyle}>
+              <AntDesign name="check" size={24} color="green" />
+            </View>
+          ),
+        });
+      }
   };
 
   render() {

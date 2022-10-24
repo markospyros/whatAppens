@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { Text, StyleSheet, View, Button } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import FormComponent from "../components/FormScreenComponents/FormComponent";
-import { questionaires } from "../components/FormScreenComponents/Question/Questions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import nettskjema from "../api/nettskjema";
 
@@ -68,24 +67,32 @@ export default class HomeScreen extends Component {
             navigation={this.props.navigation}
             array={this.state.morningPointsArray}
             formName="Morning"
+            startHour={8}
+            endHour={12}
           />
           <FormComponent
             questionnaire={this.state.questionnaires}
             navigation={this.props.navigation}
             array={this.state.noonPointsArray}
             formName="Noon"
+            startHour={12}
+            endHour={16}
           />
           <FormComponent
             questionnaire={this.state.questionnaires}
             navigation={this.props.navigation}
             array={this.state.afternoonPointsArray}
             formName="Afternoon"
+            startHour={16}
+            endHour={20}
           />
           <FormComponent
             questionnaire={this.state.questionnaires}
             navigation={this.props.navigation}
             array={this.state.eveningPointsArray}
             formName="Evening"
+            startHour={20}
+            endHour={24}
           />
         </View>
         {/* <Button onPress={this.sendData} title="Send" /> */}
