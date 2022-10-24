@@ -3,13 +3,37 @@ import React, { Component } from "react";
 import { Text, TouchableOpacity, StyleSheet, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
-import nettskjema from "../../api/nettskjema";
+import { AntDesign } from "@expo/vector-icons";
 
 export default class FormComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      answerStatusState: (
+        <View style={styles.answerContainerStyle}>
+          <Text style={styles.answerStyle}>Answer</Text>
+          <MaterialIcons name="arrow-forward-ios" size={24} color="#197CA5" />
+        </View>
+      ),
+    };
+  }
+
   navigationToForm = () => {
-    this.props.navigation.navigate("Form", {
-      questionnaire: this.props.questionnaire,
-    });
+    if (this.props.array.length === 0) {
+      this.props.navigation.navigate("Form", {
+        questionnaire: this.props.questionnaire,
+        array: this.props.array,
+      });
+    }
+    if (this.props.array.length > 0) {
+      this.setState({
+        answerStatusState: (
+          <View style={styles.answerContainerStyle}>
+            <AntDesign name="check" size={24} color="green" />
+          </View>
+        ),
+      });
+    }
   };
 
   render() {
@@ -27,10 +51,7 @@ export default class FormComponent extends Component {
           />
           <Text style={styles.formNameStyle}>{this.props.formName}</Text>
         </View>
-        <View style={styles.answerContainerStyle}>
-          <Text style={styles.answerStyle}>Answer</Text>
-          <MaterialIcons name="arrow-forward-ios" size={24} color="#197CA5" />
-        </View>
+        {this.state.answerStatusState}
       </TouchableOpacity>
     );
   }

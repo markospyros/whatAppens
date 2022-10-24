@@ -12,6 +12,10 @@ export default class HomeScreen extends Component {
     super(props);
     this.state = {
       questionnaires: [],
+      morningPointsArray: [],
+      noonPointsArray: [],
+      afternoonPointsArray: [],
+      eveningPointsArray: [],
     };
   }
 
@@ -62,21 +66,25 @@ export default class HomeScreen extends Component {
           <FormComponent
             questionnaire={this.state.questionnaires}
             navigation={this.props.navigation}
+            array={this.state.morningPointsArray}
             formName="Morning"
           />
           <FormComponent
             questionnaire={this.state.questionnaires}
             navigation={this.props.navigation}
+            array={this.state.noonPointsArray}
             formName="Noon"
           />
           <FormComponent
             questionnaire={this.state.questionnaires}
             navigation={this.props.navigation}
+            array={this.state.afternoonPointsArray}
             formName="Afternoon"
           />
           <FormComponent
             questionnaire={this.state.questionnaires}
             navigation={this.props.navigation}
+            array={this.state.eveningPointsArray}
             formName="Evening"
           />
         </View>

@@ -16,7 +16,7 @@ import OptionButton from "../components/FormScreenComponents/OptionButton/Option
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const FormScreen = ({ navigation, route }) => {
-  let { questionnaire } = route.params;
+  let { questionnaire, array } = route.params;
 
   const questions = questionnaire.map((question) => question.text);
 
@@ -43,19 +43,28 @@ const FormScreen = ({ navigation, route }) => {
   const Next = (answer) => {
     if (answer === "Ikke plaget") {
       setScore((score += 0));
+      array.push(0);
+      alert(array);
     }
 
     if (answer === "Lite plaget") {
       setScore((score += 1));
+      array.push(1);
+      alert(array);
     }
 
     if (answer === "Ganske mye") {
       setScore((score += 2));
+      array.push(2);
+      alert(array);
     }
 
     if (answer === "Veldig mye") {
       setScore((score += 3));
+      array.push(3);
+      alert(array);
     }
+
     if (counter !== lastQuestion) {
       setCounter((counter += 1));
       setQuestion(questions[counter]);
