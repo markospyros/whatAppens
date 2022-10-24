@@ -1,36 +1,40 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { Component } from "react";
 import { Text, TouchableOpacity, StyleSheet, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
+import nettskjema from "../../api/nettskjema";
 
-const FormComponent = (props) => {
-  return (
-    <TouchableOpacity
-      onPress={() =>
-        props.navigation.navigate("Form", { key: props.secretKey })
-      }
-      style={styles.container}
-      disabled={props.disability}
-    >
-      <View style={styles.iconContainer}>
-        <MaterialCommunityIcons
-          name="clipboard-text"
-          size={40}
-          color="#197CA5"
-          style={styles.icon}
-        />
-        <Text style={styles.formNameStyle}>{props.formName}</Text>
-      </View>
-      <View style={styles.answerContainerStyle}>
-        <Text style={styles.answerStyle}>Answer</Text>
-        <MaterialIcons name="arrow-forward-ios" size={24} color="#197CA5" />
-      </View>
-    </TouchableOpacity>
-  );
-};
+export default class FormComponent extends Component {
+  navigationToForm = () => {
+    this.props.navigation.navigate("Form", {
+      questionnaire: this.props.questionnaire,
+    });
+  };
 
-export default FormComponent;
+  render() {
+    return (
+      <TouchableOpacity
+        onPress={this.navigationToForm}
+        style={styles.container}
+      >
+        <View style={styles.iconContainer}>
+          <MaterialCommunityIcons
+            name="clipboard-text"
+            size={40}
+            color="#197CA5"
+            style={styles.icon}
+          />
+          <Text style={styles.formNameStyle}>{this.props.formName}</Text>
+        </View>
+        <View style={styles.answerContainerStyle}>
+          <Text style={styles.answerStyle}>Answer</Text>
+          <MaterialIcons name="arrow-forward-ios" size={24} color="#197CA5" />
+        </View>
+      </TouchableOpacity>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {

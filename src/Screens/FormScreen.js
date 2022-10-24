@@ -16,7 +16,9 @@ import OptionButton from "../components/FormScreenComponents/OptionButton/Option
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const FormScreen = ({ navigation, route }) => {
-  const questions = questionnaires.map((question) => question.text);
+  let { questionnaire } = route.params;
+
+  const questions = questionnaire.map((question) => question.text);
 
   let [counter, setCounter] = useState(0);
 
@@ -29,8 +31,6 @@ const FormScreen = ({ navigation, route }) => {
   let [storage, setStorage] = useState();
 
   const lastQuestion = questions.length - 1;
-
-  let { key } = route.params;
 
   const save = async () => {
     try {
@@ -61,9 +61,7 @@ const FormScreen = ({ navigation, route }) => {
       setQuestion(questions[counter]);
       setOptions(optionsArray(questionnaires, counter));
     } else {
-      save();
       navigation.navigate("Tabs");
-      DevSettings.reload();
     }
   };
 
@@ -103,7 +101,7 @@ const FormScreen = ({ navigation, route }) => {
         <Text style={styles.questionCounter}>
           <Text style={styles.currentQuestion}>{counter + 1}</Text>
           <Text style={styles.lastQuestion}> / {questions.length} </Text>
-      </Text>
+        </Text>
       </View>
     </SafeAreaView>
   );
@@ -126,10 +124,10 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     width: 150,
   },
-  currentQuestion:{
+  currentQuestion: {
     fontSize: 20,
-    fontWeight: '500',
-    opacity: 1
+    fontWeight: "500",
+    opacity: 1,
   },
   container: {
     height: "100%",
@@ -153,8 +151,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 50,
   },
-  questionCounter:{
+  questionCounter: {
     marginBottom: 10,
-    textAlign: "center"
-  }
+    textAlign: "center",
+  },
 });
