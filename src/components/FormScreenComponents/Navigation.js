@@ -9,7 +9,9 @@ const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
   return (
-    <Stack.Navigator screenOptions={{ animation: "none" }}>
+    <Stack.Navigator
+      screenOptions={{ animation: "none", gestureEnabled: false }}
+    >
       <Stack.Screen
         name="Tabs"
         component={Tabs}

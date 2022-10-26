@@ -4,6 +4,6 @@ export default axios.create({
   baseURL: "https://nettskjema.no/api",
   headers: {
     Authorization:
-      "Bearer 5owmu2ajr1140pl4nbp42muju2tb47nt1ubn2qofn01jk01911pt3qtef1gebmqfn5b9baesk2u8pui6d9conu173gi3v8np9c476ockihee5aso9dbu8de1ghkd3grjhasv",
+      "Bearer 0l12kulcfjtkor5he975jtcrj4kg05rfpoebou248andcgajbv3of2fc7hcr5opeh43oljt4i5mn5ia640ag9fgq4i7np6ivovql3idlu2jvacb8hc1kopbdndoa4r3v36pt",
   },
 });

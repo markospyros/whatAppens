@@ -15,9 +15,11 @@ import OptionButton from "../components/FormScreenComponents/OptionButton/Option
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const FormScreen = ({ navigation, route }) => {
-  let { questionnaire, array } = route.params;
+  let { questionnaire, pointsArray, objectAnswerArray } = route.params;
 
   const questions = questionnaire.map((question) => question.text);
+
+  const questionsId = questionnaire.map((question) => question.questionId);
 
   let [counter, setCounter] = useState(0);
 
@@ -39,25 +41,53 @@ const FormScreen = ({ navigation, route }) => {
     }
   };
 
-  const Next = (answer) => {
-    if (answer === "Ikke plaget") {
+  const Next = (answer, questionID, answerID) => {
+    if (answer === "Not Affected") {
       setScore((score += 0));
-      array.push(0);
+      pointsArray.push(0);
+
+      object = {
+        questionId: questionID,
+        answerId: answerID,
+      };
+
+      objectAnswerArray.push(object);
     }
 
-    if (answer === "Lite plaget") {
+    if (answer === "Little Affected") {
       setScore((score += 1));
-      array.push(1);
+      pointsArray.push(1);
+
+      object = {
+        questionId: questionID,
+        answerId: answerID,
+      };
+
+      objectAnswerArray.push(object);
     }
 
-    if (answer === "Ganske mye") {
+    if (answer === "Quite Affected") {
       setScore((score += 2));
-      array.push(2);
+      pointsArray.push(2);
+
+      object = {
+        questionId: questionID,
+        answerId: answerID,
+      };
+
+      objectAnswerArray.push(object);
     }
 
-    if (answer === "Veldig mye") {
+    if (answer === "Very Affected") {
       setScore((score += 3));
-      array.push(3);
+      pointsArray.push(3);
+
+      object = {
+        questionId: questionID,
+        answerId: answerID,
+      };
+
+      objectAnswerArray.push(object);
     }
 
     if (counter !== lastQuestion) {
@@ -73,13 +103,16 @@ const FormScreen = ({ navigation, route }) => {
     setCounter((counter -= 1));
     setQuestion(questions[counter]);
     setOptions(optionsArray(questionnaire, counter));
+    objectAnswerArray.splice(objectAnswerArray.length - 1, 1);
   };
 
   const renderOptions = options.map((option) => {
     return (
       <OptionButton
         key={option.answerOptionId}
-        onPress={() => Next(option.text)}
+        onPress={() =>
+          Next(option.text, questionsId[counter], option.answerOptionId)
+        }
         option={option.text}
       />
     );

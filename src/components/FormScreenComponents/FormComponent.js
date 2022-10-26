@@ -18,30 +18,63 @@ export default class FormComponent extends Component {
     };
   }
 
-  currentHour = new Date().getHours();
+  currentHour = `${new Date().getHours()}:${new Date().getMinutes()}`;
 
   navigationToForm = () => {
     if (
       this.currentHour >= this.props.startHour &&
       this.currentHour <= this.props.endHour
-    )
-      if (this.props.array.length === 0) {
+    ) {
+      if (this.props.pointsArray.length === 0) {
         {
           this.props.navigation.navigate("Form", {
             questionnaire: this.props.questionnaire,
-            array: this.props.array,
+            pointsArray: this.props.pointsArray,
+            objectAnswerArray: this.props.objectAnswerArray,
           });
         }
-      } else {
-        this.setState({
-          answerStatusState: (
-            <View style={styles.answerContainerStyle}>
-              <AntDesign name="check" size={24} color="green" />
-            </View>
-          ),
-        });
       }
+    }
+    const checkIcon = (
+      <View style={styles.answerContainerStyle}>
+        <AntDesign name="check" size={24} color="green" />
+      </View>
+    );
+
+    if (this.props.pointsArray.length !== 0) {
+      this.setState({
+        answerStatusState: checkIcon,
+      });
+    }
   };
+
+  componentDidMount() {
+    const answerIcon = (
+      <View style={styles.answerContainerStyle}>
+        <Text style={styles.answerStyle}>Answer</Text>
+        <MaterialIcons name="arrow-forward-ios" size={24} color="#197CA5" />
+      </View>
+    );
+
+    const lockIcon = (
+      <View style={styles.answerContainerStyle}>
+        <AntDesign name="lock" size={24} color="gray" />
+      </View>
+    );
+
+    if (
+      this.currentHour >= this.props.startHour &&
+      this.currentHour <= this.props.endHour
+    ) {
+      this.setState({
+        answerStatusState: answerIcon,
+      });
+    } else {
+      this.setState({
+        answerStatusState: lockIcon,
+      });
+    }
+  }
 
   render() {
     return (
