@@ -15,7 +15,7 @@ import OptionButton from "../components/FormScreenComponents/OptionButton/Option
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const FormScreen = ({ navigation, route }) => {
-  let { questionnaire, pointsArray, objectAnswerArray } = route.params;
+  let { questionnaire, pointsArray, objectAnswerArray, check } = route.params;
 
   const questions = questionnaire.map((question) => question.text);
 
@@ -95,7 +95,8 @@ const FormScreen = ({ navigation, route }) => {
       setQuestion(questions[counter]);
       setOptions(optionsArray(questionnaire, counter));
     } else {
-      navigation.navigate("Tabs");
+      check();
+      navigation.goBack();
     }
   };
 

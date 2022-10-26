@@ -18,7 +18,21 @@ export default class FormComponent extends Component {
     };
   }
 
-  currentHour = `${new Date().getHours()}:${new Date().getMinutes()}`;
+  currentHour = `${new Date().getHours()}:${new Date().getMinutes}`;
+
+  check = (icon) => {
+    // const checkIcon = (
+    //   <View style={styles.answerContainerStyle}>
+    //     <AntDesign name="check" size={24} color="green" />
+    //   </View>
+    // );
+
+    if (this.props.pointsArray.length !== 0) {
+      this.setState({
+        answerStatusState: icon,
+      });
+    }
+  };
 
   navigationToForm = () => {
     if (
@@ -31,20 +45,10 @@ export default class FormComponent extends Component {
             questionnaire: this.props.questionnaire,
             pointsArray: this.props.pointsArray,
             objectAnswerArray: this.props.objectAnswerArray,
+            answerStatusState: (icon) => this.check(icon),
           });
         }
       }
-    }
-    const checkIcon = (
-      <View style={styles.answerContainerStyle}>
-        <AntDesign name="check" size={24} color="green" />
-      </View>
-    );
-
-    if (this.props.pointsArray.length !== 0) {
-      this.setState({
-        answerStatusState: checkIcon,
-      });
     }
   };
 
