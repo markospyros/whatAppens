@@ -35,23 +35,23 @@ export default class FormComponent extends Component {
   // };
 
   navigationToForm = () => {
-    // if (
-    //   this.currentHour >= this.props.startHour &&
-    //   this.currentHour <= this.props.endHour
-    // ) {
-    if (this.props.pointsArray.length === 0) {
-      {
-        this.props.navigation.navigate("Form", {
-          generalQuestionnaires: this.props.generalQuestionnaires,
-          questionnaire: this.props.questionnaire,
-          pointsArray: this.props.pointsArray,
-          objectAnswerArray: this.props.objectAnswerArray,
-          localObjectsArray: this.props.localObjectsArray,
-          finalAnswersArray: this.props.finalAnswersArray,
-        });
+    if (
+      this.currentHour >= this.props.startHour &&
+      this.currentHour <= this.props.endHour
+    ) {
+      if (this.props.pointsArray.length === 0) {
+        {
+          this.props.navigation.navigate("Form", {
+            generalQuestionnaires: this.props.generalQuestionnaires,
+            questionnaire: this.props.questionnaire,
+            pointsArray: this.props.pointsArray,
+            objectAnswerArray: this.props.objectAnswerArray,
+            localObjectsArray: this.props.localObjectsArray,
+            finalAnswersArray: this.props.finalAnswersArray,
+          });
+        }
       }
     }
-    //}
   };
 
   componentDidMount() {
@@ -68,18 +68,18 @@ export default class FormComponent extends Component {
       </View>
     );
 
-    // if (
-    //   this.currentHour >= this.props.startHour &&
-    //   this.currentHour <= this.props.endHour
-    // ) {
-    this.setState({
-      answerStatusState: answerIcon,
-    });
-    // } else {
-    //   this.setState({
-    //     answerStatusState: lockIcon,
-    //   });
-    // }
+    if (
+      this.currentHour >= this.props.startHour &&
+      this.currentHour <= this.props.endHour
+    ) {
+      this.setState({
+        answerStatusState: answerIcon,
+      });
+    } else {
+      this.setState({
+        answerStatusState: lockIcon,
+      });
+    }
   }
 
   render() {
