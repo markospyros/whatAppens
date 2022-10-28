@@ -20,6 +20,8 @@ export default class HomeScreen extends Component {
       noonObjectAnswerArray: [],
       afternoonObjectAnswerArray: [],
       eveningObjectAnswerArray: [],
+      localObjectsArray: [],
+      finalAnswersArray: [],
     };
   }
 
@@ -33,33 +35,6 @@ export default class HomeScreen extends Component {
   componentDidMount() {
     this.getNettskjemaData();
   }
-
-  // sendData = () => {
-  //   answers = [
-  //     {
-  //       type: "SINGLE_OPTION",
-  //       questionId: 4927863,
-  //       id: 11267478,
-  //     },
-  //     {
-  //       type: "SINGLE_OPTION",
-  //       questionId: 4927877,
-  //       id: 11267510,
-  //     },
-  //     {
-  //       type: "SINGLE_OPTION",
-  //       questionId: 4927878,
-  //       id: 11267513,
-  //     },
-  //     {
-  //       type: "SINGLE_OPTION",
-  //       questionId: 4927879,
-  //       id: 11267518,
-  //     },
-  //   ];
-
-  //   nettskjema.post("v2/private/deliver/form/285961", { answers });
-  // };
 
   render() {
     const morningQuestionnaires = [];
@@ -94,7 +69,11 @@ export default class HomeScreen extends Component {
             formName="Morning"
             startHour={"8:00"}
             endHour={"12:00"}
+            message={this.check}
+            generalQuestionnaires={this.state.generalQuestionnaires}
             objectAnswerArray={this.state.morningObjectAnswerArray}
+            localObjectsArray={this.state.localObjectsArray}
+            finalAnswersArray={this.state.finalAnswersArray}
           />
           <FormComponent
             questionnaire={noonQuestionnaires}
@@ -103,7 +82,11 @@ export default class HomeScreen extends Component {
             formName="Noon"
             startHour={"12:00"}
             endHour={"16:00"}
+            message={this.check}
+            generalQuestionnaires={this.state.generalQuestionnaires}
             objectAnswerArray={this.state.noonObjectAnswerArray}
+            localObjectsArray={this.state.localObjectsArray}
+            finalAnswersArray={this.state.finalAnswersArray}
           />
           <FormComponent
             questionnaire={afternoonQuestionnaires}
@@ -112,7 +95,11 @@ export default class HomeScreen extends Component {
             formName="Afternoon"
             startHour={"16:00"}
             endHour={"20:00"}
+            message={this.check}
+            generalQuestionnaires={this.state.generalQuestionnaires}
             objectAnswerArray={this.state.afternoonObjectAnswerArray}
+            localObjectsArray={this.state.localObjectsArray}
+            finalAnswersArray={this.state.finalAnswersArray}
           />
           <FormComponent
             questionnaire={eveningQuestionnaires}
@@ -121,10 +108,13 @@ export default class HomeScreen extends Component {
             formName="Evening"
             startHour={"20:00"}
             endHour={"24:00"}
+            message={this.check}
+            generalQuestionnaires={this.state.generalQuestionnaires}
             objectAnswerArray={this.state.eveningObjectAnswerArray}
+            localObjectsArray={this.state.localObjectsArray}
+            finalAnswersArray={this.state.finalAnswersArray}
           />
         </View>
-        {/* <Button onPress={this.sendData} title="Send" /> */}
       </SafeAreaView>
     );
   }
