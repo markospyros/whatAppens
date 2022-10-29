@@ -67,8 +67,8 @@ export default class HomeScreen extends Component {
             navigation={this.props.navigation}
             pointsArray={this.state.morningPointsArray}
             formName="Morning"
-            startHour={"8:00"}
-            endHour={"12:00"}
+            startHour={8}
+            endHour={12}
             message={this.check}
             generalQuestionnaires={this.state.generalQuestionnaires}
             objectAnswerArray={this.state.morningObjectAnswerArray}
@@ -80,8 +80,8 @@ export default class HomeScreen extends Component {
             navigation={this.props.navigation}
             pointsArray={this.state.noonPointsArray}
             formName="Noon"
-            startHour={"12:00"}
-            endHour={"16:00"}
+            startHour={12}
+            endHour={16}
             message={this.check}
             generalQuestionnaires={this.state.generalQuestionnaires}
             objectAnswerArray={this.state.noonObjectAnswerArray}
@@ -93,8 +93,8 @@ export default class HomeScreen extends Component {
             navigation={this.props.navigation}
             pointsArray={this.state.afternoonPointsArray}
             formName="Afternoon"
-            startHour={"16:00"}
-            endHour={"20:00"}
+            startHour={16}
+            endHour={20}
             message={this.check}
             generalQuestionnaires={this.state.generalQuestionnaires}
             objectAnswerArray={this.state.afternoonObjectAnswerArray}
@@ -106,8 +106,8 @@ export default class HomeScreen extends Component {
             navigation={this.props.navigation}
             pointsArray={this.state.eveningPointsArray}
             formName="Evening"
-            startHour={"20:00"}
-            endHour={"24:00"}
+            startHour={20}
+            endHour={24}
             message={this.check}
             generalQuestionnaires={this.state.generalQuestionnaires}
             objectAnswerArray={this.state.eveningObjectAnswerArray}
