@@ -21,7 +21,6 @@ const FormScreen = ({ navigation, route }) => {
     generalQuestionnaires,
     questionnaire,
     pointsArray,
-    objectAnswerArray,
     localObjectsArray,
     finalAnswersArray,
   } = route.params;
@@ -90,7 +89,6 @@ const FormScreen = ({ navigation, route }) => {
       };
 
       localObjectsArray.push(localObject);
-      objectAnswerArray.push(object);
       finalAnswersArray.push(object);
     }
 
@@ -113,7 +111,6 @@ const FormScreen = ({ navigation, route }) => {
       };
 
       localObjectsArray.push(localObject);
-      objectAnswerArray.push(object);
       finalAnswersArray.push(object);
     }
 
@@ -136,7 +133,6 @@ const FormScreen = ({ navigation, route }) => {
       };
 
       localObjectsArray.push(localObject);
-      objectAnswerArray.push(object);
       finalAnswersArray.push(object);
     }
 
@@ -159,7 +155,6 @@ const FormScreen = ({ navigation, route }) => {
       };
 
       localObjectsArray.push(localObject);
-      objectAnswerArray.push(object);
       finalAnswersArray.push(object);
     }
 
@@ -183,7 +178,7 @@ const FormScreen = ({ navigation, route }) => {
     setCounter((counter -= 1));
     setQuestion(questions[counter]);
     setOptions(optionsArray(questionnaire, counter));
-    objectAnswerArray.splice(objectAnswerArray.length - 1, 1);
+    finalAnswersArray.splice(finalAnswersArray.length - 1, 1);
   };
 
   const renderOptions = options.map((option) => {
