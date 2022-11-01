@@ -67,8 +67,8 @@ export default class HomeScreen extends Component {
             navigation={this.props.navigation}
             pointsArray={this.state.morningPointsArray}
             formName="Morning"
-            startHour={8}
-            endHour={12}
+            startHour={"8:00"}
+            endHour={"12:00"}
             generalQuestionnaires={this.state.generalQuestionnaires}
             localObjectsArray={this.state.localObjectsArray}
             finalAnswersArray={this.state.finalAnswersArray}
@@ -78,8 +78,8 @@ export default class HomeScreen extends Component {
             navigation={this.props.navigation}
             pointsArray={this.state.noonPointsArray}
             formName="Noon"
-            startHour={12}
-            endHour={16}
+            startHour={"12:00"}
+            endHour={"16:00"}
             generalQuestionnaires={this.state.generalQuestionnaires}
             localObjectsArray={this.state.localObjectsArray}
             finalAnswersArray={this.state.finalAnswersArray}
@@ -89,8 +89,8 @@ export default class HomeScreen extends Component {
             navigation={this.props.navigation}
             pointsArray={this.state.afternoonPointsArray}
             formName="Afternoon"
-            startHour={16}
-            endHour={20}
+            startHour={"16:00"}
+            endHour={"20:00"}
             generalQuestionnaires={this.state.generalQuestionnaires}
             localObjectsArray={this.state.localObjectsArray}
             finalAnswersArray={this.state.finalAnswersArray}
@@ -100,8 +100,8 @@ export default class HomeScreen extends Component {
             navigation={this.props.navigation}
             pointsArray={this.state.eveningPointsArray}
             formName="Evening"
-            startHour={20}
-            endHour={24}
+            startHour={"20:00"}
+            endHour={"24:00"}
             generalQuestionnaires={this.state.generalQuestionnaires}
             localObjectsArray={this.state.localObjectsArray}
             finalAnswersArray={this.state.finalAnswersArray}

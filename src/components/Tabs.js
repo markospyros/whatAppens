@@ -2,7 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Entypo, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import HomeScreen from "../Screens/HomeScreen";
-import { GraphScreen } from "../Screens/GraphScreen";
+import GraphScreen from "../Screens/GraphScreen";
 import { SymptonScreen } from "../Screens/SymptonScreen";
 import TipsScreen from "../Screens/TipsScreen";
 

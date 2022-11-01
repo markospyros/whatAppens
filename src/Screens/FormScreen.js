@@ -15,10 +15,13 @@ import OptionButton from "../components/FormScreenComponents/OptionButton/Option
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AntDesign } from "@expo/vector-icons";
 import { addPointsIntoCategories } from "../utils/addPointsIntoCategories";
+import { getWeekNumber } from "../utils/getWeekNumber";
+import { getWeekDay } from "../utils/getWeekDay";
 
 const FormScreen = ({ navigation, route }) => {
   let {
     generalQuestionnaires,
+    formName,
     questionnaire,
     pointsArray,
     localObjectsArray,
@@ -49,13 +52,19 @@ const FormScreen = ({ navigation, route }) => {
 
   const lastQuestion = questions.length - 1;
 
-  // const save = async () => {
-  //   try {
-  //     await AsyncStorage.setItem(key, score.toString());
-  //   } catch (error) {
-  //     alert(error);
-  //   }
-  // };
+  const saveLocalData = async (pointSum) => {
+    try {
+      const storageData = [0, 0, 0, 0, 0, 0, 0];
+
+      storageData[new Date().getDay()] = pointSum;
+
+      const weekKey = getWeekNumber();
+
+      await AsyncStorage.setItem(weekKey, JSON.stringify(storageData));
+    } catch (error) {
+      alert(error);
+    }
+  };
 
   const sendData = () => {
     const postData = { metadata: {}, answers: finalAnswersArray };
@@ -75,10 +84,7 @@ const FormScreen = ({ navigation, route }) => {
       pointsArray.push(0);
 
       localObject = {
-        questionId: questionID,
-        id: answerID,
         varName: varName,
-        date: date,
         points: 0,
       };
 
@@ -97,10 +103,7 @@ const FormScreen = ({ navigation, route }) => {
       pointsArray.push(1);
 
       localObject = {
-        questionId: questionID,
-        id: answerID,
         varName: varName,
-        date: date,
         points: 1,
       };
 
@@ -119,10 +122,7 @@ const FormScreen = ({ navigation, route }) => {
       pointsArray.push(2);
 
       localObject = {
-        questionId: questionID,
-        id: answerID,
         varName: varName,
-        date: date,
         points: 2,
       };
 
@@ -141,10 +141,7 @@ const FormScreen = ({ navigation, route }) => {
       pointsArray.push(3);
 
       localObject = {
-        questionId: questionID,
-        id: answerID,
         varName: varName,
-        date: date,
         points: 3,
       };
 
@@ -166,8 +163,7 @@ const FormScreen = ({ navigation, route }) => {
       if (finalAnswersArray.length === generalQuestionnaires.length) {
         depPoints = addPointsIntoCategories(localObjectsArray, "Depr");
         angPoints = addPointsIntoCategories(localObjectsArray, "Angst");
-        console.log("depPoints:" + depPoints);
-        console.log("angPoints:" + angPoints);
+        saveLocalData(depPoints);
         sendData();
       }
       navigation.goBack();
