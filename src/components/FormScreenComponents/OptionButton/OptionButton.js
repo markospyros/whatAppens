@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   optionText: {
     fontSize: 18,
     fontWeight: "500",
-    color: "#2a4365",
+    color: "black",
     marginLeft: 10,
     marginVertical: 8,
   },

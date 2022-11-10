@@ -198,7 +198,7 @@ const FormScreen = ({ navigation, route }) => {
     <SafeAreaView>
       <View style={styles.container}>
         <View>
-          <Text style={styles.info}>Tenk på de siste 24 timene</Text>
+          <Text style={styles.info}>Think about the last 24 hours</Text>
         </View>
         <View style={styles.question}>
           <Question question={question} />
