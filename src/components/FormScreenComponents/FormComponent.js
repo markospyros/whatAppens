@@ -35,10 +35,15 @@ export default class FormComponent extends Component {
   // };
 
   navigationToForm = () => {
-    // if (
-    //   this.currentHour >= this.props.startHour &&
-    //   this.currentHour <= this.props.endHour
-    // ) {
+    const checkIcon = (
+      <View style={styles.answerContainerStyle}>
+        <AntDesign name="check" size={24} color="green" />
+      </View>
+    );
+    if (
+      this.currentHour >= this.props.startHour &&
+      this.currentHour <= this.props.endHour
+    ) {
     if (this.props.pointsArray.length === 0) {
       {
         this.props.navigation.navigate("Form", {
@@ -51,7 +56,16 @@ export default class FormComponent extends Component {
         });
       }
     }
-    // }
+    else {
+      this.setState({
+        answerStatusState: (
+          <View style={styles.answerContainerStyle}>
+            <AntDesign name="check" size={24} color="green" />
+          </View>
+        ),
+      });
+    }
+    }
   };
 
   componentDidMount() {
@@ -68,28 +82,19 @@ export default class FormComponent extends Component {
       </View>
     );
 
-    const checkIcon = (
-      <View style={styles.answerContainerStyle}>
-        <AntDesign name="check" size={24} color="green" />
-      </View>
-    );
 
-    if (this.props.pointsArray.length !== 0) {
-      this.setState({ answerContainerStyle: checkIcon });
+    if (
+      this.currentHour >= this.props.startHour &&
+      this.currentHour <= this.props.endHour
+    ) {
+      this.setState({
+        answerStatusState: answerIcon,
+      });
+    } else {
+      this.setState({
+        answerStatusState: lockIcon,
+      });
     }
-
-    // if (
-    //   this.currentHour >= this.props.startHour &&
-    //   this.currentHour <= this.props.endHour
-    // ) {
-    //   this.setState({
-    //     answerStatusState: answerIcon,
-    //   });
-    // } else {
-    //   this.setState({
-    //     answerStatusState: lockIcon,
-    //   });
-    // }
   }
 
   render() {

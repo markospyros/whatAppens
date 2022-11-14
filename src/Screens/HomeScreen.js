@@ -67,8 +67,8 @@ export default class HomeScreen extends Component {
             navigation={this.props.navigation}
             pointsArray={this.state.morningPointsArray}
             formName="Morning"
-            startHour={"8:00"}
-            endHour={"12:00"}
+            startHour={"16:00"}
+            endHour={"18:00"}
             generalQuestionnaires={this.state.generalQuestionnaires}
             localObjectsArray={this.state.localObjectsArray}
             finalAnswersArray={this.state.finalAnswersArray}
@@ -89,8 +89,8 @@ export default class HomeScreen extends Component {
             navigation={this.props.navigation}
             pointsArray={this.state.afternoonPointsArray}
             formName="Afternoon"
-            startHour={"16:00"}
-            endHour={"20:00"}
+            // startHour={"16:00"}
+            // endHour={"20:00"}
             generalQuestionnaires={this.state.generalQuestionnaires}
             localObjectsArray={this.state.localObjectsArray}
             finalAnswersArray={this.state.finalAnswersArray}
