@@ -40,31 +40,26 @@ export default class FormComponent extends Component {
         <AntDesign name="check" size={24} color="green" />
       </View>
     );
+
     if (
       this.currentHour >= this.props.startHour &&
       this.currentHour <= this.props.endHour
     ) {
-    if (this.props.pointsArray.length === 0) {
-      {
-        this.props.navigation.navigate("Form", {
-          generalQuestionnaires: this.props.generalQuestionnaires,
-          formName: this.props.formName,
-          questionnaire: this.props.questionnaire,
-          pointsArray: this.props.pointsArray,
-          localObjectsArray: this.props.localObjectsArray,
-          finalAnswersArray: this.props.finalAnswersArray,
-        });
+      if (this.props.pointsArray.length === 0) {
+        {
+          this.props.navigation.navigate("Form", {
+            generalQuestionnaires: this.props.generalQuestionnaires,
+            formName: this.props.formName,
+            questionnaire: this.props.questionnaire,
+            pointsArray: this.props.pointsArray,
+            localObjectsArray: this.props.localObjectsArray,
+            finalAnswersArray: this.props.finalAnswersArray,
+          });
+        }
       }
     }
-    else {
-      this.setState({
-        answerStatusState: (
-          <View style={styles.answerContainerStyle}>
-            <AntDesign name="check" size={24} color="green" />
-          </View>
-        ),
-      });
-    }
+    if (this.props.pointsArray.length !== 0) {
+      this.setState({ answerContainerStyle: checkIcon });
     }
   };
 
@@ -81,7 +76,6 @@ export default class FormComponent extends Component {
         <AntDesign name="lock" size={24} color="gray" />
       </View>
     );
-
 
     if (
       this.currentHour >= this.props.startHour &&
